@@ -1,13 +1,14 @@
 //creating card component
 import React from "react";
 
-const Card = () => {
+//card component takes name email and id properties
+const Card = ({ name, email, id }) => {
     return (
-        <div>
-            <img src='' />
+        <div className="tc bg-light-green dib br3 pa3 ma2 grow">
+            <img alt='robot' src={`https://robohash.org/${id}?200x200`} />
             <div>
-                <h2>Name Surname</h2>
-                <p>name.surname@email.com</p>
+                <h2>{name}</h2>
+                <p>{email}</p>
             </div>
         </div>
     );
