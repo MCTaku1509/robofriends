@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import CardList from './CardList';
-import { robots } from './robots';
-import SearchBox from './SearchBox';
+import CardList from '../components/CardList';
+import { robots } from '../robots';
+import SearchBox from '../components/SearchBox';
+import Scroll from '../components/Scroll.js';
 
 //combining components into a signle app
 
@@ -23,14 +24,17 @@ class App extends Component {
     }
 
     render() {
-        const filteredRobots = this.state.robots.filter(robot => {
-            return robot.name.toLowerCase().includes(this.state.searchfield.toLowerCase());
+        const { robots, searchfield } = this.state
+        const filteredRobots = robots.filter(robot => {
+            return robot.name.toLowerCase().includes(searchfield.toLowerCase());
         })
         return (
             <div className="tc">
                 <h1>Robofriends</h1>
                 <SearchBox searchChange={this.onSearchEntry}/>
-                <CardList robots={filteredRobots} />
+                <Scroll>
+                    <CardList robots={filteredRobots} />
+                </Scroll>
             </div>
         ); 
     }   
